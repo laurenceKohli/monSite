@@ -4,10 +4,198 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + Vue</title>
+    <title>CV - Laurence Kohli</title>
+    <script type="module" src="/src/main.js"></script>
+    <style>
+       body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+    }
+    </style>
   </head>
   <body>
     <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
   </body>
 </html>
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Graphique Fixe avec Courbe</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      overflow-x: hidden;
+      height: 300vh; /* Permet beaucoup de défilement */
+    }
+
+    .container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .graph-wrapper {
+      position: fixed;
+      top: 50px;
+      width: 90%;
+      max-width: 1000px;
+      height: 500px;
+      background: #fff;
+      border: 1px solid #ccc;
+      overflow: hidden;
+    }
+
+    .graph {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Courbe sous forme de chemin SVG */
+    .curve {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+  
+
+    /* Lieux */
+    .locations {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .location {
+      position: absolute;
+      font-size: 14px;
+      color: #333;
+      opacity: 0; /* Caché au départ */
+      transform: translateY(20px); /* Décalage vertical au départ */
+    }
+
+    /* Positionnement des lieux */
+    .location.le-monet { left: 15%; top: 20%; }
+    .location.forel { left: 30%; top: 35%; }
+    .location.chevroux { left: 55%; top: 60%; }
+    .location.la-combette { left: 65%; top: 70%; }
+    .location.la-bioleyre { left: 75%; top: 65%; }
+    .location.prahens { left: 90%; top: 50%; }
+  </style>
+</head> -->
+<!-- <body>
+  <div class="container">
+    <div class="graph-wrapper">
+      <div class="graph"> -->
+        <!-- Courbe SVG -->
+        <!-- <div class="curve">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 581 98">
+          <path d="M62.9 14.9c-25-7.74-56.6 4.8-60.4 24.3-3.73 19.6 21.6 35 39.6 37.6 42.8 
+          6.2 72.9-53.4 116-58.9 65-18.2 191 101 215 28.8 5-16.7-7-49.1-34-44-34 11.5-31 46.5-14 69.3 9.38 
+          12.6 24.2 20.6 39.8 22.9 91.4 9.05 102-98.9 176-86.7 18.8 3.81 33 17.3 36.7 34.6 2.01 10.2.124 21.1-5.18 30.1" 
+          stroke="#000" stroke-width="4.3" fill="none" >
+        </path>
+        <circle id="movingPoint" r="8" fill="red" />
+        </svg>
+        </div> -->
+        <!-- Lieux -->
+        <!-- <div class="locations">
+          <div class="location le-monet">Le Monet</div>
+          <div class="location forel">Forel</div>
+          <div class="location chevroux">Chevroux</div>
+          <div class="location la-combette">La Combette</div>
+          <div class="location la-bioleyre">La Bioleyre</div>
+          <div class="location prahens">Prahens</div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- <script>
+    gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
+    
+    // Récupération du path pour le calcul de la position
+    const path = document.querySelector("path");
+    const point = document.querySelector("#movingPoint");
+  const l = path.getTotalLength();
+
+  gsap.set(path, { strokeDasharray: l, strokeDashoffset: l });
+
+// Animation déclenchée par le scroll
+gsap.to(path, {
+  strokeDashoffset: 0, // Révéler progressivement le tracé
+  scrollTrigger: {
+    trigger: ".container", // L'élément qui déclenche l'animation
+    start: "top top", // Quand l'élément atteint 80% de la fenêtre
+    end: "bottom 5%", // Quand l'élément atteint 20% de la fenêtre
+    scrub: true, // Synchroniser l'animation avec le scroll
+    markers: true, // Marquer l'élément comme déclencheur
+  },
+});
+
+
+gsap.set(point, {
+        motionPath: {
+            path: path,
+            align: path,
+            autoRotate: true,
+            alignOrigin: [0.5, 0.5],
+            start: 0
+        }
+    });
+    // Animation du point rouge
+    gsap.to(point, {
+      ease: "none",
+      motionPath: {
+        path: path,
+        align: path,
+        alignOrigin: [0.5, 0.5],
+        autoRotate: true
+      },
+      scrollTrigger: {
+        trigger: ".container",
+        start: "top top",
+        end: "bottom 5%",
+        scrub: true
+      }
+    });
+
+    // Animation des lieux
+    const locations = document.querySelectorAll(".location");
+    locations.forEach((location, index) => {
+      gsap.fromTo(
+        location,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          ease: "power1.out",
+          scrollTrigger: {
+            trigger: ".container",
+            start: `${index * 15 + 20}% top`, // Décalage progressif
+            end: "bottom bottom",
+            scrub: true
+          }
+        }
+      );
+    });
+  </script>
+</body>
+</html> -->
+

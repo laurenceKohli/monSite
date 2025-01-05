@@ -19,7 +19,7 @@ export function usePathAnimation(pathRef, pointRef) {
     gsap.to(path, {
       strokeDashoffset: 0,
       scrollTrigger: {
-        trigger: ".container",
+        trigger: "#monParcours",
         start: "top top",
         end: "bottom 5%",
         scrub: true,
@@ -46,7 +46,7 @@ export function usePathAnimation(pathRef, pointRef) {
         autoRotate: true
       },
       scrollTrigger: {
-        trigger: ".container",
+        trigger: "#monParcours",
         start: "top top",
         end: "bottom 5%",
         scrub: true

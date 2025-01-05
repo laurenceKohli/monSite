@@ -1,0 +1,41 @@
+{
+    "events": [
+      {
+        "date": "01/01/2016",
+        "title": "Major Funding",
+        "year": "2016",
+        "description": "LEILAC consortium secures €12 Million EU Funding to demonstrate technology to reduce carbon emissions from cement and lime industries."
+      },
+      {
+        "date": "01/01/2017",
+        "title": "LEILAC Project Kick-off",
+        "year": "2017",
+        "description": "LEILAC project kicks off with 11 partners from 7 countries."
+      },
+      
+      {
+        "date": "01/03/2017",
+        "title": "LEILAC Project Kick-off 2",
+        "year": "2017",
+        "description": "LEILAC project kicks off with 11 partners from 7 countries."
+      },
+      {
+        "date": "01/01/2018",
+        "title": "LEILAC Pilot Plant Construction",
+        "year": "2018",
+        "description": "Construction of the LEILAC pilot plant begins at the HeidelbergCement plant in Lixhe, Belgium."
+      },
+      {
+        "date": "01/12/2019",
+        "title": "LEILAC Pilot Plant Commissioning",
+        "year": "2019",
+        "description": "LEILAC pilot plant is commissioned and begins operations."
+      },
+      {
+        "date": "01/01/2020",
+        "title": "LEILAC Pilot Plant Operation",
+        "year": "2020",
+        "description": "LEILAC pilot plant continues to operate successfully."
+      }
+    ]
+  }

@@ -1,14 +1,16 @@
 <script setup>
 import PathAnimation from './PathAnimation.vue'
 import AppGrille from './AppGrille.vue'
+import TheTimeline from './TheTimeline.vue';
 
 
 </script>
 
 <template>
      <div class="graph-wrapper">
-        <AppGrille :height="500" :rows="4" :columns="10"></AppGrille>
-        <PathAnimation />
+        <!-- <AppGrille :height="500" :rows="4" :columns="10"></AppGrille> -->
+        <!-- <PathAnimation /> -->
+        <TheTimeline />
     </div>
 </template>
 

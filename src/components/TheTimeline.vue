@@ -9,101 +9,90 @@ const events = ref(timelineData.events);
 const eventsMinDistance = 60;
 
 const timelineTotWidth = computed(() => {
-  if (!events.value.length) return 0;
-  const dates = events.value.map(event => new Date(event.year));
-  const timeSpan = dates[dates.length - 1] - dates[0];
-  return Math.max(timeSpan / (1000 * 60 * 60 * 24) * eventsMinDistance / 30, 800);
+    if (!events.value.length) return 0;
+    const dates = events.value.map(event => new Date(event.year));
+    const timeSpan = dates[dates.length - 1] - dates[0];
+    return Math.max(timeSpan / (1000 * 60 * 60 * 24) * eventsMinDistance / 30, 800);
 });
-const selectedEvent = ref(null);
+const selectedEvent = ref(events.value[0]);
 
 const navState = ref({
-  canGoNext: true,
-  canGoPrev: false
+    canGoNext: true,
+    canGoPrev: false
 });
 
 const updateNavState = (state) => {
-  navState.value = state;
+    navState.value = state;
 };
 
 // Initialize the timeline on component mount
 onMounted(() => {
-  // Set the default selected event to the first one
-  if (events.value.length > 0) {
-    selectedEvent.value = events.value[0];
-  }
+    // Set the default selected event to the first one
+    if (events.value.length > 0) {
+        selectedEvent.value = events.value[0];
+    }
 });
 
 const selectEvent = (direction) => {
-  if (typeof direction === 'string') {
-    // Find the index of the currently selected event
-    const currentIndex = events.value.findIndex(event => event === selectedEvent.value);
+    if (typeof direction === 'string') {
+        // Find the index of the currently selected event
+        const currentIndex = events.value.findIndex(event => event === selectedEvent.value);
 
-    let newIndex = currentIndex;
-    if (direction === 'prev' && currentIndex > 0) {
-      newIndex = currentIndex - 1;
-    } else if (direction === 'next' && currentIndex < events.value.length - 1) {
-      newIndex = currentIndex + 1;
+        let newIndex = currentIndex;
+        if (direction === 'prev' && currentIndex > 0) {
+            newIndex = currentIndex - 1;
+        } else if (direction === 'next' && currentIndex < events.value.length - 1) {
+            newIndex = currentIndex + 1;
+        }
+
+        // Set the new selected event
+        selectedEvent.value = events.value[newIndex];
+    } else {
+        // Directly set the selected event (on event click)
+        selectedEvent.value = direction;
+
     }
-
-    // Set the new selected event
-    selectedEvent.value = events.value[newIndex];
     updateNavState({
-      canGoNext: newIndex < events.value.length - 1,
-      canGoPrev: newIndex > 0
+        canGoNext: events.value.indexOf(selectedEvent.value) < events.value.length - 1,
+        canGoPrev: events.value.indexOf(selectedEvent.value) > 0
     });
-  } else {
-    // Directly set the selected event (on event click)
-    selectedEvent.value = direction;
-  }
 };
 </script>
 
 <template>
-  <section class="cd-horizontal-timeline">
-    <div class="timeline">
-      <TimelineEvents
-        :events="events"
-        :selectedEvent="selectedEvent"
-        :eventsMinDistance="eventsMinDistance"
-        @selectEvent="selectEvent"
-      />
+    <section class="cd-horizontal-timeline">
+        <TimelineContent :event="selectedEvent" />
 
-      <TimelineNavigation
-        :timelineTotWidth="timelineTotWidth"
-        :canGoNext="navState.canGoNext"
-        :canGoPrev="navState.canGoPrev"
-        @navigate="selectEvent"
-      />
-    </div>
+        <div class="timeline">
+            <TimelineEvents :events="events" :selectedEvent="selectedEvent" :eventsMinDistance="eventsMinDistance"
+                @selectEvent="selectEvent" />
 
-    <TimelineContent :events="events" :selectedEvent="selectedEvent" />
-  </section>
+            <TimelineNavigation :timelineTotWidth="timelineTotWidth" :canGoNext="navState.canGoNext"
+                :canGoPrev="navState.canGoPrev" @navigate="selectEvent" />
+        </div>
+
+
+    </section>
 </template>
 
 <style scoped>
 .cd-horizontal-timeline {
-  position: relative;
+    /* position: relative;
   width: 90%;
   /* max-width: 800px; */
-  margin: 2em auto;
+    /* margin: 2em auto; */
+    position: absolute;
+    width: 90%;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 2em;
 }
 
 .timeline {
-  position: relative;
-  height: 100px;
-  margin: 0 40px;
-}
-
-/* Media Queries */
-@media (min-width: 768px) {
-  .cd-horizontal-timeline {
-    margin: 4em auto;
-  }
-}
-
-@media (min-width: 1100px) {
-  .cd-horizontal-timeline {
-    margin: 6em auto;
-  }
+    position: relative;
+    height: 100px;
+    margin: 0 40px;
+    top: 20px;
 }
 </style>

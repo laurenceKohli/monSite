@@ -1,111 +1,58 @@
 <script setup>
 const props = defineProps({
-  events: Array,
-  selectedEvent: Object,
+    event: Object,
 });
 </script>
 
 <template>
-  <div class="events-content">
-    <ol>
-      <li
-        v-for="event in events"
-        :key="event.date"
-        :data-date="event.date"
-        :class="{ selected: event === selectedEvent }"
-      >
+    <div id="projet" :data-date="event.date" :class="event.tag">
         <h2>{{ event.title }}</h2>
         <em>{{ event.date }}</em>
+        <div v-if="event.tag === 'projet'" id="expertises">
+            <p class="expertise" v-for="expertise in event.expertises">{{ expertise }}</p>
+        </div>
         <p>{{ event.description }}</p>
-      </li>
-    </ol>
-  </div>
+    </div>
 </template>
 
 <style scoped>
-.events-content {
-  position: relative;
-  width: 100%;
-  margin: 2em 0;
-  overflow:visible;
-  transition: height 0.4s;
-}
-ol {
-  list-style: none;
-  padding: 0;
-}
-.events-content li {
-  position: absolute;
-  z-index: 1;
-  width: 100%;
-  left: 0;
-  top: 0;
-  transform: translateX(-100%);
-  opacity: 0;
-  padding: 0 5%;
-  animation-duration: 0.4s;
-  animation-timing-function: ease-in-out;
-}
-
-.events-content li.selected {
-  position: relative;
-  z-index: 2;
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.enter-right {
-  animation-name: cd-enter-right;
-}
-
-.enter-left {
-  animation-name: cd-enter-left;
-}
-
-@keyframes cd-enter-right {
-  0% {
-    opacity: 0;
-    transform: translateX(100%);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0%);
-  }
-}
-
-@keyframes cd-enter-left {
-  0% {
-    opacity: 0;
-    transform: translateX(-100%);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0%);
-  }
-}
-
-/* Styles existants conservés */
 h2 {
-  color: #005695;
-  font-weight: bold;
-  font-size: 1.6rem;
-  line-height: 1.2;
+    color: #d04dd4;
+    font-weight: bold;
+    font-size: 1.6rem;
+    line-height: 1.2;
 }
 
 em {
-  display: block;
-  font-style: italic;
-  margin: 10px auto;
+    display: block;
+    font-style: italic;
+    margin: 10px auto;
 }
 
-em::before {
-  content: '- ';
+em::before, em::after {
+    content: ' - ';
 }
 
 p {
-  font-size: 1.4rem;
-  color: #959595;
-  line-height: 1.6;
-  margin-bottom: 15px;
+    font-size: 1.4rem;
+    color: #959595;
+    line-height: 1.6;
+}
+#expertises {
+    margin: 10px 0;
+   display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.expertise {
+    font-size: 0.8rem;
+    padding: 0.2rem 0.8rem;
+    border-radius: 0.35rem;
+    background-color: #e7aeae;
+}
+
+.projet h2{
+    color: #0d1fc2;
 }
 </style>

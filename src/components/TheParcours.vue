@@ -7,7 +7,7 @@ import TheTimeline from './TheTimeline.vue';
 </script>
 
 <template>
-     <div class="graph-wrapper">
+    <div class="graph-wrapper">
         <!-- <AppGrille :height="500" :rows="4" :columns="10"></AppGrille> -->
         <!-- <PathAnimation /> -->
         <TheTimeline />
@@ -15,14 +15,14 @@ import TheTimeline from './TheTimeline.vue';
 </template>
 
 <style scoped>
- .graph-wrapper {
-      position: fixed;
-      top: 50px;
-      width: 90%;
-      max-width: 1000px;
-      height: 500px;
-      background: #fff;
-      border: 1px solid #ccc;
-      overflow: hidden;
-    }
+.graph-wrapper {
+    position: fixed;
+    top: 50px;
+    width: 90%;
+    max-width: 1000px;
+    height: 500px;
+    background: #fff;
+    border: 1px solid #ccc;
+    overflow: hidden;
+}
 </style>

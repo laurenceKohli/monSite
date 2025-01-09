@@ -1,0 +1,100 @@
+{
+  "tags": [
+    {
+      "name": "certification",
+      "color": "#e02626"
+    },
+    {
+      "name": "diplome",
+      "color": "#FF5722"
+    },
+    {
+      "name": "projet",
+      "color": "#0d1fc2"
+    },
+    {
+      "name": "benevolat",
+      "color": "#24bbf7"
+    },
+    {
+      "name": "kids",
+      "color": "#10e43e"
+    },
+    {
+      "name": "default",
+      "color": "#aa24f7"
+    }
+  ],
+  "events": [
+      {
+        "position": "17/11/2024",
+        "periode" : "automne 2024",
+        "title": "ENSA : Premier secours en santé mental",
+        "year": "2024",
+        "tag" : 0
+      },
+      {
+          "position": "03/06/2024",
+          "periode" : "printemps 2024",
+          "title": "VaudSentiers – App de sentiers culturels",
+          "year": "2024",
+          "tag" : 2,
+          "expertises" : ["Laravel", "Vue.js"],
+          "description": "Dans le cadre d’un travail d’intégration en groupe, j’ai réalisé les données tests des sentiers et généré les seeders. Nous avons utilisé Laravel pour le backend et Vue.js pour le frontend. J’ai jonglé entre les deux technologies pour gérer toute la partie connexion et historique. ",
+          "images" : ["src/assets/vue.svg","src/assets/HP-bento.png","src/assets/vaudSentiers-bento.png"]
+      },
+      {
+        "position": "12/12/2024",
+        "periode" : "automne 2024",
+        "title": "CoBex – App de courses d’orientation",
+        "year": "2024",
+        "tag" : 2,
+        "expertises" : ["Laravel", "Vue.js"],
+        "description": "Pour un de nos projets de cours, nous avons réalisé une application pour participer à des parcours fixes de course d’orientation sur la commune de Bex. Une partie création de parcours est aussi accessible aux administrateurs. Je me suis chargée de la mise en place de l’API et de l’enregistrement des parcours ainsi que du classement des résultats.",
+        "images" : ["src/assets/vue.svg","src/assets/HP-bento.png"]
+      }
+    ],
+    "formations":[
+      {
+        "debut":"23/08/2015",
+        "fin":"01/07/2016",
+        "title":"Maturité gymnasiale",
+        "ecole":"Lyca",
+        "lieu":"Lycée-Collège de St-Maurice",
+        "description":"Option : physique et application des mathématiques"
+      },
+      {
+        "debut":"23/08/2016",
+        "fin":"01/07/2019",
+        "title":"Maturité gymnasiale",
+        "ecole":"KSSB",
+        "lieu":"Kollegium Spiritus Sanctus Brig",
+        "description":"Option : physique et application des mathématiques <br> Echange scolaire à Brig avec des cours uniquement en allemand "
+      },
+      {
+        "debut":"23/08/2019",
+        "fin":"01/07/2021",
+        "title":"Maturité gymnasiale",
+        "ecole":"Lyca",
+        "lieu":"Lycée-Collège de St-Maurice",
+        "description":"Option : physique et application des mathématiques <br> Option complémentaire : informatique"
+      },
+      { "debut": "01/09/2021",
+        "fin": "01/07/2022",
+        "title": "Année préparatoire (APFI)",
+        "ecole":"HEIG-VD",
+        "lieu": "Yverdon-les-Bains",
+        "description": "Préparation aux études d’ingénieure à la suite d’une maturité. Un semestre de mise à niveau théorique et un semestre de stage en entreprise.",
+        "lien": "https://heig-vd.ch/formation/avant-les-etudes/apfi/"
+      },
+      {
+        "debut": "01/09/2022",
+        "fin": "01/09/2025",
+        "title": "Bachelor en Ingénierie des médias",
+        "ecole":"HEIG-VD",
+        "lieu": "Yverdon-les-Bains",
+        "description": "Gestion de projet, création de site web et d’application, création d’API, infrastructure des données, scrollytelling, communication visuelle, UX / UI.",
+        "lien": "https://heig-vd.ch/formation/bachelor/ingenierie-des-medias/"
+      }
+    ]
+  }

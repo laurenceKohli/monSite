@@ -34,14 +34,25 @@
         "tag" : 1
       },
       {
+          "position": "05/05/2024",
+          "periode" : "printemps 2024",
+          "title": "Harry Potter's House",
+          "year": "2023",
+          "tag" : 2,
+          "url": "https://harrypotter-visualdon24.netlify.app/",
+          "expertises" : ["Scrollytelling", "GSAP", "ScrollMagic", "D3.js"],
+          "description" : "<h2>Objectifs pédagogiques</h2><ul><li>Créer une visualisation interactive</li><li>Raconter une histoire</li><li>Utiliser des services de données ouvertes</li></ul><h2>Notre projet</h2><p>Le but de ce projet est de répartir les participants dans les différentes maisons de Poudlard en fonction de leurs réponses à un questionnaire.</p><p>Le site leur fournit ensuite des explications détaillées sur leur maison telles que les personnages avec le plus de temps d'écran, les personnages les plus connus et des informations sur comment la maison a été choisie.</p><h3>L'équipe</h3><p>Nous étions en groupe par deux. Je faisais équipe avec Steve Pasche.</p><h3>Les technologies utilisées</h3><ul><li>GSAP</li><li>Scrollama</li><li>D3 : selection, array, axis, scale, transition</li><li>JavaScript</li><li>HTML</li><li>CSS : utilisation de variables, pas de framework</li></ul><h3>Ma contribution</h3><p>J'ai réalisé la majorité des animations GSAP et Scrollama (Choixpeau, vif d'or, affichage des personnes principales et des films, apparition de Dobby).</p><p>J'ai également participé à l'implémentation des différentes pages et à la lecture des données provenant de nos différentes sources.</p><p>Je me suis chargé du graphique en bâtons des maisons et celui des temps d'écrans. Steve a implémenté la carte de description du personnage.</p><h3>Ma plus grande fierté sur le projet</h3><p>Je suis extrêmement fière des animations. J'ai pu apprendre à utiliser GSAP et le vif d'or réagissant au scroll autant en descendant qu'en montant la page est ma plus grande réussite du projet.</p>",
+          "images" : ["HP-bento.png","HP-vifOr.png", "HP-dataVis.png"]
+      },
+      {
           "position": "03/06/2024",
           "periode" : "printemps 2024",
           "title": "VaudSentiers – App de sentiers culturels",
           "year": "2024",
           "tag" : 2,
           "expertises" : ["Laravel", "Vue.js"],
-          "description": "Dans le cadre d’un travail d’intégration en groupe, j’ai réalisé les données tests des sentiers et généré les seeders. Nous avons utilisé Laravel pour le backend et Vue.js pour le frontend. J’ai jonglé entre les deux technologies pour gérer toute la partie connexion et historique. ",
-          "images" : ["src/assets/vue.svg","src/assets/HP-bento.png","src/assets/vaudSentiers-bento.png"]
+          "description": "<p>Dans le cadre d’un travail d’intégration en groupe, j’ai réalisé les données tests des sentiers et généré les seeders.</p><p> Nous avons utilisé Laravel pour le backend et Vue.js pour le frontend. J’ai jonglé entre les deux technologies pour gérer toute la partie connexion et historique.</p>",
+          "images" : ["vaudSentiers-bento.png"]
       },
       {
         "position": "12/12/2024",
@@ -51,7 +62,7 @@
         "tag" : 2,
         "expertises" : ["Laravel", "Vue.js"],
         "description": "Pour un de nos projets de cours, nous avons réalisé une application pour participer à des parcours fixes de course d’orientation sur la commune de Bex. Une partie création de parcours est aussi accessible aux administrateurs. Je me suis chargée de la mise en place de l’API et de l’enregistrement des parcours ainsi que du classement des résultats.",
-        "images" : ["src/assets/vue.svg","src/assets/HP-bento.png"]
+        "images" : ["vue.svg","HP-bento.png"]
       }
     ],
     "formations":[

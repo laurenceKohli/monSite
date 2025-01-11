@@ -23,6 +23,7 @@ async function createDatabase(db) {
             title TEXT NOT NULL, 
             year TEXT NOT NULL,
             tag_id INTEGER,
+            url TEXT,
             description TEXT,
             FOREIGN KEY (tag_id) REFERENCES tags (id)
         );
@@ -72,8 +73,8 @@ async function insertData(db) {
         // Insert events
         for (const event of jsonData.events) {
             const result = await db.run(
-                'INSERT INTO events (position, periode, title, year, tag_id, description) VALUES (?, ?, ?, ?, ?, ?)',
-                [event.position, event.periode, event.title, event.year, event.tag, event.description]
+                'INSERT INTO events (position, periode, title, year, tag_id, description, url) VALUES (?, ?, ?, ?, ?, ?, ?)',
+                [event.position, event.periode, event.title, event.year, event.tag, event.description, event.url]
             );
             
             const eventId = result.lastID;

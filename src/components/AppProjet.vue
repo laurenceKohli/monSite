@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useFetchApi } from '../composables/useFetchAPI';
+import { getEventColor } from '../composables/useTags';
 import TheExpertises from './TheExpertises.vue';
 
 const props = defineProps({
@@ -29,6 +30,10 @@ const prevImage = () => {
             event.value.images.length - 1 : currentImage.value - 1;
     }
 };
+
+const goBack = () => {
+    location.hash = '#portefolio';
+};
 </script>
 
 <template>
@@ -37,7 +42,7 @@ const prevImage = () => {
     <article v-else-if="event" class="projet">
         <div class="carousel" v-if="event.images?.length > 0">
             <button class="carousel-btn prev" @click="prevImage">&#10094;</button>
-            <img :src="event.images[currentImage]" :alt="event.title">
+            <img :src="event.images[currentImage]" alt="Image du projet" />
             <button class="carousel-btn next" @click="nextImage">&#10095;</button>
             <div class="dots">
                 <span v-for="(_, index) in event.images" 
@@ -49,18 +54,47 @@ const prevImage = () => {
         </div>
 
         <div class="content">
-            <h2>{{ event.title }}</h2>
+            <div class="header">
+            <h1 :style="{ color: getEventColor(event.tag_id) }">{{ event.title }}</h1>
+            <button class="btn-retour" @click="goBack">Retour</button>
+        </div>
             <div class="metadata">
-                <span class="periode">{{ event.periode }}</span>
                 <TheExpertises :expertises="event.expertises" />
+                <span class="periode">{{ event.periode }}</span>
+                <a v-if="event.url" 
+               :href="event.url" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="btn-url">
+                Voir le résultat
+            </a>
             </div>
-            <p class="description">{{ event.description }}</p>
+            <div class="description" v-html="event.description"></div>
         </div>
     </article>
     <div v-else>Projet non trouvé</div>
 </template>
 
 <style scoped>
+.header {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+h1{
+    margin-bottom: 20px;
+}
+
+.btn-retour {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
 .projet {
     max-width: 800px;
     margin: 0 auto;
@@ -136,10 +170,5 @@ h2 {
 
 .periode {
     font-style: italic;
-}
-
-.description {
-    line-height: 1.6;
-    color: #444;
 }
 </style>

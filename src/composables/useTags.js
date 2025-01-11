@@ -3,7 +3,7 @@ import timelineData from '/backend/eventsV2.json';
 
 export const tags = timelineData.tags;
 
-const excludedTags = ['kids', 'default'];
+const excludedTags = ['camps', 'default'];
 export const activeTags = ref(tags.map(tag => tag.name).filter(name => !excludedTags.includes(name)));
 
 export const toggleTag = (tagName) => {

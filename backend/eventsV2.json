@@ -5,19 +5,19 @@
       "color": "#e02626"
     },
     {
-      "name": "diplome",
-      "color": "#FF5722"
+      "name": "projet de cours",
+      "color": "#0d1fc2"
     },
     {
-      "name": "projet",
-      "color": "#0d1fc2"
+      "name": "projet professionnel",
+      "color": "#FF5722"
     },
     {
       "name": "benevolat",
       "color": "#24bbf7"
     },
     {
-      "name": "kids",
+      "name": "camps",
       "color": "#10e43e"
     },
     {
@@ -38,7 +38,7 @@
           "periode" : "printemps 2024",
           "title": "VaudSentiers – App de sentiers culturels",
           "year": "2024",
-          "tag" : 2,
+          "tag" : 1,
           "expertises" : ["Laravel", "Vue.js"],
           "description": "Dans le cadre d’un travail d’intégration en groupe, j’ai réalisé les données tests des sentiers et généré les seeders. Nous avons utilisé Laravel pour le backend et Vue.js pour le frontend. J’ai jonglé entre les deux technologies pour gérer toute la partie connexion et historique. ",
           "images" : ["src/assets/vue.svg","src/assets/HP-bento.png","src/assets/vaudSentiers-bento.png"]
@@ -48,7 +48,7 @@
         "periode" : "automne 2024",
         "title": "CoBex – App de courses d’orientation",
         "year": "2024",
-        "tag" : 2,
+        "tag" : 1,
         "expertises" : ["Laravel", "Vue.js"],
         "description": "Pour un de nos projets de cours, nous avons réalisé une application pour participer à des parcours fixes de course d’orientation sur la commune de Bex. Une partie création de parcours est aussi accessible aux administrateurs. Je me suis chargée de la mise en place de l’API et de l’enregistrement des parcours ainsi que du classement des résultats.",
         "images" : ["src/assets/vue.svg","src/assets/HP-bento.png"]

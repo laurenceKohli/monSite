@@ -1,6 +1,6 @@
 <script setup>
-import { ref, computed } from 'vue';
-import { filteredEvents } from '../composables/useEvents';
+import { ref, onMounted } from 'vue';
+import { useFetchApi } from '../composables/useFetchAPI';
 import TheExpertises from './TheExpertises.vue';
 
 const props = defineProps({
@@ -10,28 +10,37 @@ const props = defineProps({
     }
 });
 
-const event = computed(() => filteredEvents.value[props.index]);
-
-const images = computed(() => event.value?.images || []);
+const { data: event, error, isLoading, fetchData } = useFetchApi(`events/${props.index}`);
 const currentImage = ref(0);
 
+onMounted(() => {
+    fetchData();
+});
+
 const nextImage = () => {
-    currentImage.value = (currentImage.value + 1) % images.value.length;
+    if (event.value?.images) {
+        currentImage.value = (currentImage.value + 1) % event.value.images.length;
+    }
 };
 
 const prevImage = () => {
-    currentImage.value = currentImage.value === 0 ? images.value.length - 1 : currentImage.value - 1;
+    if (event.value?.images) {
+        currentImage.value = currentImage.value === 0 ? 
+            event.value.images.length - 1 : currentImage.value - 1;
+    }
 };
 </script>
 
 <template>
-    <article class="projet">
-        <div class="carousel" v-if="event.tag != 0 && images.length > 0">
+    <div v-if="isLoading">Chargement...</div>
+    <div v-else-if="error">Erreur: {{ error }}</div>
+    <article v-else-if="event" class="projet">
+        <div class="carousel" v-if="event.images?.length > 0">
             <button class="carousel-btn prev" @click="prevImage">&#10094;</button>
-            <img :src="images[currentImage]" :alt="event.title">
+            <img :src="event.images[currentImage]" :alt="event.title">
             <button class="carousel-btn next" @click="nextImage">&#10095;</button>
             <div class="dots">
-                <span v-for="(_, index) in images" 
+                <span v-for="(_, index) in event.images" 
                       :key="index" 
                       :class="{ active: currentImage === index }"
                       @click="currentImage = index">
@@ -48,6 +57,7 @@ const prevImage = () => {
             <p class="description">{{ event.description }}</p>
         </div>
     </article>
+    <div v-else>Projet non trouvé</div>
 </template>
 
 <style scoped>

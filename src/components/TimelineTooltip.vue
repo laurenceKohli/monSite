@@ -2,15 +2,23 @@
 import TheExpertises from './TheExpertises.vue';
 
 const props = defineProps({
-    event: Object,
+    x: Number,
+    y: Number,
+    title: String,
+    expertises: {
+        type: Array,
+        default: () => []
+    }
 });
 </script>
 
 <template>
-    <div class="tooltip">
-        <h2>{{ event.title }}</h2>
-        <TheExpertises :expertises="event.expertises" />
-    </div>
+    <foreignObject :x="x" :y="y" width="200" height="100">
+        <div class="tooltip">
+            <h2>{{ title }}</h2>
+            <TheExpertises v-if="expertises && expertises.length" :expertises="expertises" />
+        </div>
+    </foreignObject>
 </template>
 
 <style scoped>

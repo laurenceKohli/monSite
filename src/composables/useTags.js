@@ -1,10 +1,24 @@
 import { ref } from 'vue';
-import timelineData from '/backend/eventsV2.json';
+import { useFetchApi } from './useFetchAPI';
 
-export const tags = timelineData.tags;
-
+export const tags = ref([]);
+export const activeTags = ref([]);
 const excludedTags = ['camps', 'default'];
-export const activeTags = ref(tags.map(tag => tag.name).filter(name => !excludedTags.includes(name)));
+
+// Charger les tags depuis l'API
+const { data, error, fetchData } = useFetchApi('/tags');
+
+// Fonction d'initialisation
+export const initTags = async () => {
+    await fetchData();
+    if (data.value) {
+        tags.value = data.value;
+        // Filtrer les tags actifs
+        activeTags.value = data.value
+            .map(tag => tag.name)
+            .filter(name => !excludedTags.includes(name));
+    }
+};
 
 export const toggleTag = (tagName) => {
     const index = activeTags.value.indexOf(tagName);
@@ -15,7 +29,10 @@ export const toggleTag = (tagName) => {
     }
 };
 
-export const getEventColor = (tagIndex) => {
-    const tag = tags[tagIndex];
-    return tag ? tag.color : tags.find(t => t.name === 'default').color;
+export const getEventColor = (tagId) => {
+    const tag = tags.value.find(t => t.id === tagId);
+    return tag ? tag.color : tags.value.find(t => t.name === 'default')?.color;
 };
+
+// Initialiser les tags au démarrage
+initTags();

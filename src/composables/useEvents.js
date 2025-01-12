@@ -31,7 +31,7 @@ import { useFetchApi } from './useFetchAPI';
 import { tags, activeTags } from './useTags';
 
 export const events = ref([]);
-const { data, error, isLoading, fetchData } = useFetchApi('/events');
+const { data, error, isLoading, fetchData } = useFetchApi('events');
 
 // Initialisation des événements
 export const initEvents = async () => {

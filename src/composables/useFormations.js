@@ -30,7 +30,7 @@ import { ref, computed } from 'vue';
 import { useFetchApi } from './useFetchAPI';
 
 export const formations = ref([]);
-const { data, error, fetchData } = useFetchApi('/formations');
+const { data, error, fetchData } = useFetchApi('formations');
 
 // Initialisation des formations
 export const initFormations = async () => {

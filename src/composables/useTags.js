@@ -6,7 +6,7 @@ export const activeTags = ref([]);
 const excludedTags = ['camps', 'default'];
 
 // Charger les tags depuis l'API
-const { data, error, fetchData } = useFetchApi('/tags');
+const { data, error, fetchData } = useFetchApi('tags');
 
 // Fonction d'initialisation
 export const initTags = async () => {

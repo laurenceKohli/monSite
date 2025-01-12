@@ -24,7 +24,12 @@ async function createDatabase(db) {
             year TEXT NOT NULL,
             tag_id INTEGER,
             url TEXT,
+            objectifs TEXT NOT NULL,
             description TEXT,
+            team TEXT,
+            contribution TEXT,
+            challenges TEXT,
+            fiertes TEXT,
             FOREIGN KEY (tag_id) REFERENCES tags (id)
         );
         
@@ -39,6 +44,19 @@ async function createDatabase(db) {
             PRIMARY KEY (event_id, expertise_id),
             FOREIGN KEY (event_id) REFERENCES events (id),
             FOREIGN KEY (expertise_id) REFERENCES expertises (id) 
+        );
+         
+        CREATE TABLE IF NOT EXISTS technologies (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL UNIQUE
+        );
+        
+        CREATE TABLE IF NOT EXISTS event_technologies (
+            event_id INTEGER,
+            technologie_id INTEGER,
+            PRIMARY KEY (event_id, technologie_id),
+            FOREIGN KEY (event_id) REFERENCES events (id),
+            FOREIGN KEY (technologie_id) REFERENCES technologies (id)
         );
         
         CREATE TABLE IF NOT EXISTS event_images (
@@ -73,10 +91,23 @@ async function insertData(db) {
         // Insert events
         for (const event of jsonData.events) {
             const result = await db.run(
-                'INSERT INTO events (position, periode, title, year, tag_id, description, url) VALUES (?, ?, ?, ?, ?, ?, ?)',
-                [event.position, event.periode, event.title, event.year, event.tag, event.description, event.url]
+                'INSERT INTO events (position, periode, title, year, tag_id, description, objectifs, url, team, contribution, challenges, fiertes) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+                [
+                    event.position,
+                    event.periode,
+                    event.title,
+                    event.year,
+                    event.tag,
+                    event.description,
+                    event.objectifs,
+                    event.url,
+                    event.team,
+                    event.contribution,
+                    event.challenges,
+                    event.fiertes
+                ]
             );
-            
+
             const eventId = result.lastID;
 
             // Insert expertises and event_expertises
@@ -87,13 +118,13 @@ async function insertData(db) {
                         'INSERT OR IGNORE INTO expertises (title) VALUES (?)',
                         [expertise]
                     );
-                    
+
                     // Récupérer l'ID de l'expertise
                     const expertiseRow = await db.get(
                         'SELECT id FROM expertises WHERE title = ?',
                         [expertise]
                     );
-                    
+
                     // Créer la relation event_expertise
                     await db.run(
                         'INSERT INTO event_expertises (event_id, expertise_id) VALUES (?, ?)',
@@ -101,7 +132,17 @@ async function insertData(db) {
                     );
                 }
             }
-
+            // Insert technologies
+            if (event.technologies) {
+                for (const tech of event.technologies) {
+                    await db.run('INSERT OR IGNORE INTO technologies (name) VALUES (?)', [tech]);
+                    const techRow = await db.get('SELECT id FROM technologies WHERE name = ?', [tech]);
+                    await db.run(
+                        'INSERT INTO event_technologies (event_id, technologie_id) VALUES (?, ?)',
+                        [eventId, techRow.id]
+                    );
+                }
+            }
             // Insert images
             if (event.images) {
                 for (const image of event.images) {
@@ -119,7 +160,7 @@ async function insertData(db) {
                 'INSERT INTO formations (debut, fin, title, ecole, lieu, description, lien) VALUES (?, ?, ?, ?, ?, ?, ?)',
                 [
                     formation.debut,
-                    formation.fin, 
+                    formation.fin,
                     formation.title,
                     formation.ecole,
                     formation.lieu,
@@ -153,7 +194,7 @@ async function deleteDatabase() {
 async function main() {
     try {
         await deleteDatabase();
-        
+
         const db = await open({
             filename: 'portfolio.sqlite',
             driver: sqlite3.Database
@@ -162,7 +203,7 @@ async function main() {
         await createDatabase(db);
         await insertData(db);
         await db.close();
-        
+
         console.log('Base de données initialisée avec succès');
     } catch (error) {
         console.error('Erreur d\'initialisation:', error);

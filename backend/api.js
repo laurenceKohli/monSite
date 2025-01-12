@@ -74,6 +74,15 @@ app.get('/api/events/:id', async (req, res) => {
         `, [req.params.id]);
         event.expertises = expertises.map(e => e.title);
 
+        // Récupérer les technologies
+        const technologies = await db.all(`
+            SELECT t.name
+            FROM technologies t
+            JOIN event_technologies et ON t.id = et.technologie_id
+            WHERE et.event_id = ?
+        `, [req.params.id]);
+        event.technologies = technologies.map(t => t.name);
+        
         // Récupérer les images
         const images = await db.all(`
             SELECT image_path 

@@ -26,7 +26,7 @@ const nextImage = () => {
 
 const prevImage = () => {
     if (event.value?.images) {
-        currentImage.value = currentImage.value === 0 ? 
+        currentImage.value = currentImage.value === 0 ?
             event.value.images.length - 1 : currentImage.value - 1;
     }
 };
@@ -45,31 +45,59 @@ const goBack = () => {
             <img :src="event.images[currentImage]" alt="Image du projet" />
             <button class="carousel-btn next" @click="nextImage">&#10095;</button>
             <div class="dots">
-                <span v-for="(_, index) in event.images" 
-                      :key="index" 
-                      :class="{ active: currentImage === index }"
-                      @click="currentImage = index">
+                <span v-for="(_, index) in event.images" :key="index" :class="{ active: currentImage === index }"
+                    @click="currentImage = index">
                 </span>
             </div>
         </div>
 
         <div class="content">
             <div class="header">
-            <h1 :style="{ color: getEventColor(event.tag_id) }">{{ event.title }}</h1>
-            <button class="btn-retour" @click="goBack">Retour</button>
-        </div>
+                <h1 :style="{ color: getEventColor(event.tag_id) }">{{ event.title }}</h1>
+                <button class="btn-retour" @click="goBack">Retour</button>
+            </div>
             <div class="metadata">
                 <TheExpertises :expertises="event.expertises" />
                 <span class="periode">{{ event.periode }}</span>
-                <a v-if="event.url" 
-               :href="event.url" 
-               target="_blank" 
-               rel="noopener noreferrer" 
-               class="btn-url">
-                Voir le résultat
-            </a>
+                <a v-if="event.url && event.tag_id == 2" :href="event.url" target="_blank" rel="noopener noreferrer" class="btn-url">
+                    Voir le résultat
+                </a>
+                <a v-else :href="event.url" target="_blank" rel="noopener noreferrer" class="btn-url">
+                    En savoir plus
+                </a>
             </div>
-            <div class="description" v-html="event.description"></div>
+            <div class="description">
+                <!-- <div class="description" v-html="event.description"> -->
+                <h2>Objectifs</h2>
+                <ul>
+                    <div v-html="event.objectifs"></div>
+                </ul>
+                <template v-if="event.description || event.contribution || event.challenges">
+                <h2>Le projet</h2>
+                <div v-html="event.description"></div>
+                <template v-if="event.team">
+                    <h3>L'équipe</h3>
+                    <p>{{ event.team }}</p>
+                </template>
+                <h3>Les technologies utilisées</h3>
+                <ul>
+                    <li v-for="techno in event.technologies" :key="techno" class="techno">
+                        {{ techno }}</li>
+                </ul>
+                <template v-if="event.contribution">
+                    <h3>Ma contribution</h3>
+                    <div v-html="event.contribution"></div>
+                </template>
+                <template v-else>
+                    <h3>Mes challenges et difficultés</h3>
+                    <div v-html="event.challenges"></div>
+                </template>
+                <template v-if="event.fiertes">
+                    <h3>Ma plus grande fierté sur le projet</h3>
+                    <p>{{ event.fiertes }}</p>
+                </template>
+            </template>
+            </div>
         </div>
     </article>
     <div v-else>Projet non trouvé</div>
@@ -82,7 +110,7 @@ const goBack = () => {
     align-items: center;
 }
 
-h1{
+h1 {
     margin-bottom: 20px;
 }
 
@@ -127,8 +155,13 @@ h1{
     border-radius: 50%;
 }
 
-.prev { left: 1rem; }
-.next { right: 1rem; }
+.prev {
+    left: 1rem;
+}
+
+.next {
+    right: 1rem;
+}
 
 .dots {
     position: absolute;

@@ -26,86 +26,149 @@
     }
   ],
   "events": [
-      {
-        "position": "17/11/2024",
-        "periode" : "automne 2024",
-        "title": "ENSA : Premier secours en santé mental",
-        "year": "2024",
-        "tag" : 1
-      },
-      {
-          "position": "05/05/2024",
-          "periode" : "printemps 2024",
-          "title": "Harry Potter's House",
-          "year": "2023",
-          "tag" : 2,
-          "url": "https://harrypotter-visualdon24.netlify.app/",
-          "expertises" : ["Scrollytelling", "GSAP", "ScrollMagic", "D3.js"],
-          "description" : "<h2>Objectifs pédagogiques</h2><ul><li>Créer une visualisation interactive</li><li>Raconter une histoire</li><li>Utiliser des services de données ouvertes</li></ul><h2>Notre projet</h2><p>Le but de ce projet est de répartir les participants dans les différentes maisons de Poudlard en fonction de leurs réponses à un questionnaire.</p><p>Le site leur fournit ensuite des explications détaillées sur leur maison telles que les personnages avec le plus de temps d'écran, les personnages les plus connus et des informations sur comment la maison a été choisie.</p><h3>L'équipe</h3><p>Nous étions en groupe par deux. Je faisais équipe avec Steve Pasche.</p><h3>Les technologies utilisées</h3><ul><li>GSAP</li><li>Scrollama</li><li>D3 : selection, array, axis, scale, transition</li><li>JavaScript</li><li>HTML</li><li>CSS : utilisation de variables, pas de framework</li></ul><h3>Ma contribution</h3><p>J'ai réalisé la majorité des animations GSAP et Scrollama (Choixpeau, vif d'or, affichage des personnes principales et des films, apparition de Dobby).</p><p>J'ai également participé à l'implémentation des différentes pages et à la lecture des données provenant de nos différentes sources.</p><p>Je me suis chargé du graphique en bâtons des maisons et celui des temps d'écrans. Steve a implémenté la carte de description du personnage.</p><h3>Ma plus grande fierté sur le projet</h3><p>Je suis extrêmement fière des animations. J'ai pu apprendre à utiliser GSAP et le vif d'or réagissant au scroll autant en descendant qu'en montant la page est ma plus grande réussite du projet.</p>",
-          "images" : ["HP-bento.png","HP-vifOr.png", "HP-dataVis.png"]
-      },
-      {
-          "position": "03/06/2024",
-          "periode" : "printemps 2024",
-          "title": "VaudSentiers – App de sentiers culturels",
-          "year": "2024",
-          "tag" : 2,
-          "expertises" : ["Laravel", "Vue.js"],
-          "description": "<p>Dans le cadre d’un travail d’intégration en groupe, j’ai réalisé les données tests des sentiers et généré les seeders.</p><p> Nous avons utilisé Laravel pour le backend et Vue.js pour le frontend. J’ai jonglé entre les deux technologies pour gérer toute la partie connexion et historique.</p>",
-          "images" : ["vaudSentiers-bento.png"]
-      },
-      {
-        "position": "12/12/2024",
-        "periode" : "automne 2024",
-        "title": "CoBex – App de courses d’orientation",
-        "year": "2024",
-        "tag" : 2,
-        "expertises" : ["Laravel", "Vue.js"],
-        "description": "Pour un de nos projets de cours, nous avons réalisé une application pour participer à des parcours fixes de course d’orientation sur la commune de Bex. Une partie création de parcours est aussi accessible aux administrateurs. Je me suis chargée de la mise en place de l’API et de l’enregistrement des parcours ainsi que du classement des résultats.",
-        "images" : ["vue.svg","HP-bento.png"]
-      }
-    ],
-    "formations":[
-      {
-        "debut":"23/08/2015",
-        "fin":"01/07/2016",
-        "title":"Maturité gymnasiale",
-        "ecole":"Lyca",
-        "lieu":"Lycée-Collège de St-Maurice",
-        "description":"Option : physique et application des mathématiques"
-      },
-      {
-        "debut":"23/08/2016",
-        "fin":"01/07/2019",
-        "title":"Maturité gymnasiale",
-        "ecole":"KSSB",
-        "lieu":"Kollegium Spiritus Sanctus Brig",
-        "description":"Option : physique et application des mathématiques <br> Echange scolaire à Brig avec des cours uniquement en allemand "
-      },
-      {
-        "debut":"23/08/2019",
-        "fin":"01/07/2021",
-        "title":"Maturité gymnasiale",
-        "ecole":"Lyca",
-        "lieu":"Lycée-Collège de St-Maurice",
-        "description":"Option : physique et application des mathématiques <br> Option complémentaire : informatique"
-      },
-      { "debut": "01/09/2021",
-        "fin": "01/07/2022",
-        "title": "Année préparatoire (APFI)",
-        "ecole":"HEIG-VD",
-        "lieu": "Yverdon-les-Bains",
-        "description": "Préparation aux études d’ingénieure à la suite d’une maturité. Un semestre de mise à niveau théorique et un semestre de stage en entreprise.",
-        "lien": "https://heig-vd.ch/formation/avant-les-etudes/apfi/"
-      },
-      {
-        "debut": "01/09/2022",
-        "fin": "01/09/2025",
-        "title": "Bachelor en Ingénierie des médias",
-        "ecole":"HEIG-VD",
-        "lieu": "Yverdon-les-Bains",
-        "description": "Gestion de projet, création de site web et d’application, création d’API, infrastructure des données, scrollytelling, communication visuelle, UX / UI.",
-        "lien": "https://heig-vd.ch/formation/bachelor/ingenierie-des-medias/"
-      }
-    ]
-  }
+    {
+      "position": "17/11/2024",
+      "periode": "automne 2024",
+      "title": "Ensa : Premier secours en santé mental",
+      "year": "2024",
+      "tag": 1,
+      "url": "https://www.ensa.swiss/fr/premiers-secours/cours/",
+      "objectifs":" <li>Avoir des connaissances de base diverses et spécifiques sur les troubles et crises psychiques</li><li>Connaitre les réflexes en cas de crises</li><li>Voir les signes de surmenage</li>"
+    },
+    {
+      "position": "05/05/2024",
+      "periode": "printemps 2024",
+      "title": "Harry Potter's House",
+      "year": "2023",
+      "tag": 2,
+      "url": "https://harrypotter-visualdon24.netlify.app/",
+      "expertises": [
+        "Scrollytelling",
+        "GSAP",
+        "ScrollMagic",
+        "D3.js"
+      ],
+      "images": [
+        "HP-bento.png",
+        "HP-vifOr.png",
+        "HP-dataVis.png"
+      ],
+      "objectifs": " <li>Créer une visualisation interactive</li><li>Raconter une histoire</li><li>Utiliser des services de données ouvertes</li>",
+      "description": " <p>Le but de ce projet est de répartir les participants dans les différentes maisons de Poudlard en fonction de leurs réponses à un questionnaire. </p><p>Le site leur fournit ensuite des explications détaillées sure leur maison tel que les personnages avec le plus de temps d'écran, les personnages les plus connus et des informations sur comment la maison a été choisie.</p>",
+      "team": "Nous étions en groupe par deux. Je faisais équipe avec Steve Pasche.",
+      "technologies": [
+        "GSAP",
+        "Scrollama",
+        "D3 : selection, array, axis, scale, transition",
+        "JavaScript",
+        "HTML",
+        "CSS : utilisation de variables, pas de framework"
+      ],
+      "contribution": "<p>J'ai réalisé la majorité des animations GSAP et Scrollama (Choixpeau, vif d'or, affichage des personnes principales et des films, apparition de Dobby).</p><p>J'ai également participé à l'implémentation des différentes pages et à la lecture des données provenant de nos différentes sources.</p><p>Je me suis chargé du graphique en bâtons des maisons et celui des temps d'écrans. Steve a implémenté la carte de description du personnage.</p>",
+      "fiertes": "Je suis extrêmement fière des animations. J'ai pu apprendre à utiliser GSAP et le vif d'or réagissant au scroll autant en descendant qu'en montant la page est ma plus grande réussite du projet."
+    },
+    {
+      "position": "03/06/2024",
+      "periode": "printemps 2024",
+      "title": "VaudSentiers – App de sentiers culturels",
+      "year": "2024",
+      "tag": 2,
+      "url": "https://vaudsentiers.ch/",
+      "expertises": [
+        "Laravel",
+        "Vue.js"
+      ],
+      "images": [
+        "VaudSentiers-1.png", "VaudSentiers-2.png", "VaudSentiers-3.png"
+      ],
+      "objectifs": "<li>Réunir nos connaissances de première et deuxième année pour réaliser une application web</li><li>Faciliter l’accès à la culture dans le canton de Vaud</li>",
+      "description" : "<p>Notre application web offre une variété de fonctionnalités pour enrichir l’expérience utilisateur. Les utilisateurs peuvent explorer les sentiers et les lieux disponibles grâce à une présentation sous forme de liste ou de carte. Ils peuvent rechercher des sentiers en utilisant divers filtres et lancer la navigation sur un sentier, ce qui permet d’afficher l’itinéraire sur une carte avec des informations sur le temps jusqu’au prochain point, des détails sur le lieu visité et la possibilité d’accéder à un audio guide.</p>",
+      "team": "Nous étions en groupe de 5 : Luca Correia Da Rocha, lead technique frondEnd, Robin Frossard, lead technique backEnd,  Lucas Tschaler,  UX/UI design et communication externe et Elodie Perring, Responsable UX/UI design et moi-même, cheffe de projet et développeuse fullstack.",
+      "technologies":[
+        "GitHub",
+        "Laravel",
+        "Vue.js",
+        "TailwindCSS",
+        "Inertia",
+        "MySQL",
+        "phpMyAdmin",
+        "Leaflet",
+        "Figma"
+      ],
+      "contribution": "<p>J'étais en charge du planning et de son suivi. Je me chargais du briefing matinal et m'assurais que tout le monde aient les informations nécessaires pour la journée. En fin de journée, je mettais à jour notre journal de bord afin de suivre nos avancées.</p><p>J’ai réalisé les données tests des sentiers et généré les seeders. J’ai jonglé entre les technologies pour gérer toute la partie connexion et historique.</p>"
+    },
+    {
+      "position": "12/12/2024",
+      "periode": "automne 2024",
+      "title": "CoBex – App de courses d’orientation",
+      "year": "2024",
+      "tag": 2,
+      "expertises": [
+        "Rest API",
+        "Vue.js",
+        "MongoDB"
+      ],
+      "objectifs":" <li>Créer une API REST</li><li>Savoir documenter et faire des tests automatisés sur une API</li><li>Créer une interface mobile avec les données de l'API en utilisant toutes les opérations CRUD</li><li>Utiliser des fonctionnalités des smartphones (localisation, images, ...)</li>",
+      "description": "<p>Nous avons réalisé une application pour participer à des parcours fixes de course d’orientation sur différentes communes. Les participants peuvent choisir leur ville puis le parcours. Tout au long du parcours, les particpants devront scanner des QR-codes et nous vérifiions que les positions du poste et de l'utilisateur sont identiques.</p>",
+      "team": "Nous étions un groupe de 2. J'étais avec Odin Wermeille.",
+      "technologies": [
+        "GitHub",
+        "Vue.js",
+        "MongoDB",
+        "Express",
+        "Node.js",
+        "Postman",
+        "Jest Supertest",
+        "OpenAPI",
+        "Media Queries : localisation et caméra",
+        "CSS : utilisation de variables, pas de framework"
+      ],
+      "contribution": "<p>Pour la partie back-end, j'ai créé les modèles, les seeders et j'ai implémenté l'aggrégation des résultats dans la route du parcours. Je me suis également occupée de la documentation et des tests automatiques.</p><p>Pour la partie front-end, je me suis chargée des pages liées aux parcours ainsi que du lancement de la course et son analyse. Je me suis aussi chargée du CSS.</p>",
+      "fiertes": "Je suis fière de la gestion de la localisation et de la caméra. J'ai pu apprendre à utiliser les média queries pour les smartphones et à gérer le scan de QR codes dans des images."
+    }
+  ],
+  "formations": [
+    {
+      "debut": "23/08/2015",
+      "fin": "01/07/2016",
+      "title": "Maturité gymnasiale",
+      "ecole": "Lyca",
+      "lieu": "Lycée-Collège de St-Maurice",
+      "description": "Option : physique et application des mathématiques"
+    },
+    {
+      "debut": "23/08/2016",
+      "fin": "01/07/2019",
+      "title": "Maturité gymnasiale",
+      "ecole": "KSSB",
+      "lieu": "Kollegium Spiritus Sanctus Brig",
+      "description": "Option : physique et application des mathématiques <br> Echange scolaire à Brig avec des cours uniquement en allemand "
+    },
+    {
+      "debut": "23/08/2019",
+      "fin": "01/07/2021",
+      "title": "Maturité gymnasiale",
+      "ecole": "Lyca",
+      "lieu": "Lycée-Collège de St-Maurice",
+      "description": "Option : physique et application des mathématiques <br> Option complémentaire : informatique"
+    },
+    {
+      "debut": "01/09/2021",
+      "fin": "01/07/2022",
+      "title": "Année préparatoire (APFI)",
+      "ecole": "HEIG-VD",
+      "lieu": "Yverdon-les-Bains",
+      "description": "Préparation aux études d’ingénieure à la suite d’une maturité. Un semestre de mise à niveau théorique et un semestre de stage en entreprise.",
+      "lien": "https://heig-vd.ch/formation/avant-les-etudes/apfi/"
+    },
+    {
+      "debut": "01/09/2022",
+      "fin": "01/09/2025",
+      "title": "Bachelor en Ingénierie des médias",
+      "ecole": "HEIG-VD",
+      "lieu": "Yverdon-les-Bains",
+      "description": "Gestion de projet, création de site web et d’application, création d’API, infrastructure des données, scrollytelling, communication visuelle, UX / UI.",
+      "lien": "https://heig-vd.ch/formation/bachelor/ingenierie-des-medias/"
+    }
+  ]
+}

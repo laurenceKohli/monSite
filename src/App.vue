@@ -7,11 +7,7 @@ import AppProjet from './components/AppProjet.vue';
 
 const currentEventIndex = ref(null);
 const routes = {
-  '#CV': {
-    component: AppCV,
-    label: 'CV',
-  },
-  '#portefolio': {
+  '#portfolio': {
     component: AppPortefolio,
     label: 'Portefolio',
   },
@@ -27,7 +23,7 @@ updateCurrentPath();
 
 function updateCurrentPath() {
   const path = window.location.hash.split('?')[0];
-  currentPath.value = routes[path] ? path : '#CV';
+  currentPath.value = routes[path] ? path : '#portfolio';
 
   if (path === '#projet') {
     const params = new URLSearchParams(window.location.hash.split('?')[1]);

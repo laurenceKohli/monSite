@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-import { getEventPosition, filteredEvents } from '../composables/useEvents';
+import { getEventPosition, filteredEvents, currentEvent } from '../composables/useEvents';
 import { getEventColor } from '../composables/useTags';
 import TimelineTooltip from './TimelineTooltip.vue';
 
@@ -18,7 +18,7 @@ const computePositions = (event) => {
 
     const tooltipPosition = {
         x: isRightSide ? eventX - 200 : eventX,
-        y: event.tag_id === 1 ? eventPosition.y - 30 : eventPosition.y - 45
+        y: event.tag === 1 ? eventPosition.y - 30 : eventPosition.y - 45
     };
 
     return {
@@ -38,14 +38,15 @@ const hideTooltip = () => {
 };
 
 const goToProject = (event) => {
-    window.location.hash = `#projet?event=${event.id}`;
+    currentEvent.value = event;
+    window.location.hash = `#projet`;
 };
 </script>
 
 <template>
     <g v-for="event in filteredEvents" :key="event.id" class="event-point">
         <template v-for="{ eventPosition, tooltipPosition } of [computePositions(event)]">
-            <circle :cx="eventPosition.x" :cy="eventPosition.y" r="5" :fill="getEventColor(event.tag_id)"
+            <circle :cx="eventPosition.x" :cy="eventPosition.y" r="5" :fill="getEventColor(event.tag)"
                 @mouseover="showTooltip(event)" @mouseleave="hideTooltip" @click="goToProject(event)" />
 
             <TimelineTooltip v-if="activeTooltip === event.title" :x="tooltipPosition.x" :y="tooltipPosition.y"

@@ -4,7 +4,8 @@ import {useTemplateRef, onMounted, ref, onUnmounted} from 'vue';
 import PathAnimation from './PathAnimation.vue'
 import AppGrille from './AppGrille.vue'
 import TheTimeline2 from './TheTimeline2.vue';
-import TheTimelineV2 from './TheTimelineV2.vue';
+// import TheTimelineV2 from './TheTimelineV2.vue';
+import TheTimelineV3 from './TheTimelineV3.vue';
 
 const graphWrapper = ref(null);
 const wrapperSize = ref({ width: 0, height: 0 });
@@ -41,7 +42,7 @@ onUnmounted(() => {
         <!-- <AppGrille :height="500" :rows="4" :columns="10"></AppGrille> -->
         <!-- <PathAnimation /> -->
         <!-- <TheTimeline2 /> -->
-         <TheTimelineV2 :box="wrapperSize"/>
+         <TheTimelineV3 :box="wrapperSize"/>
     </div>
 </template>
 

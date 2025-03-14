@@ -1,11 +1,9 @@
 <script setup>
 import { ref, computed } from 'vue';
 import TheNav from './components/TheNav.vue';
-import AppCV from './components/AppCV.vue';
 import AppPortefolio from './components/AppPortefolio.vue';
 import AppProjet from './components/AppProjet.vue';
 
-const currentEventIndex = ref(null);
 const routes = {
   '#portfolio': {
     component: AppPortefolio,
@@ -13,8 +11,7 @@ const routes = {
   },
   '#projet': {
     component: AppProjet,
-    label: 'Projet',
-    props: () => ({ index: currentEventIndex.value })
+    label: 'Projet'
   }
 }
 
@@ -24,11 +21,6 @@ updateCurrentPath();
 function updateCurrentPath() {
   const path = window.location.hash.split('?')[0];
   currentPath.value = routes[path] ? path : '#portfolio';
-
-  if (path === '#projet') {
-    const params = new URLSearchParams(window.location.hash.split('?')[1]);
-    currentEventIndex.value = parseInt(params.get('event'));
-  }
 }
 
 window.addEventListener('hashchange', updateCurrentPath);

@@ -27,26 +27,18 @@
 //     return { x, y };
 // };
 import { ref, computed } from 'vue';
-import { useFetchApi } from './useFetchAPI';
+import timelineData from '/backend/eventsV2.json';
+
 import { tags, activeTags } from './useTags';
 
 export const events = ref([]);
-const { data, error, isLoading, fetchData } = useFetchApi('events');
+export const currentEvent = ref();
 
-// Initialisation des événements
-export const initEvents = async () => {
-    await fetchData();
-    if (data.value) {
-        events.value = data.value.map(event => ({
-            ...event,
-            year: parseInt(event.year)
-        }));
-    }
-};
+events.value = timelineData.events;
 
 export const filteredEvents = computed(() => {
     return events.value.filter(event => {
-        const tag = tags.value.find(t => t.id === event.tag_id);
+        const tag = tags.value[event.tag-1];
         return tag && activeTags.value.includes(tag.name);
     });
 });
@@ -64,6 +56,3 @@ export const getEventPosition = (date, yearWidth, height, annees) => {
 
     return { x, y };
 };
-
-// Initialiser les événements au démarrage
-initEvents();

@@ -1,33 +1,34 @@
 <script setup>
 import { ref, onMounted } from 'vue';
-import { useFetchApi } from '../composables/useFetchAPI';
-import { getEventColor } from '../composables/useTags';
+// import { useFetchApi } from '../composables/useFetchAPI';
+import { getEventColor, } from '../composables/useTags';
 import TheExpertises from './TheExpertises.vue';
+import { currentEvent } from '../composables/useEvents';
 
-const props = defineProps({
-    index: {
-        type: Number,
-        required: true
-    }
-});
+// const props = defineProps({
+//     index: {
+//         type: Number,
+//         required: true
+//     }
+// });
 
-const { data: event, error, isLoading, fetchData } = useFetchApi(`events/${props.index}`);
+// const { data: event, error, isLoading, fetchData } = useFetchApi(`events/${props.index}`);
 const currentImage = ref(0);
 
-onMounted(() => {
-    fetchData();
-});
+// onMounted(() => {
+//     fetchData();
+// });
 
 const nextImage = () => {
-    if (event.value?.images) {
-        currentImage.value = (currentImage.value + 1) % event.value.images.length;
+    if (currentEvent.value?.images) {
+        currentImage.value = (currentImage.value + 1) % currentEvent.value.images.length;
     }
 };
 
 const prevImage = () => {
-    if (event.value?.images) {
+    if (currentEvent.value?.images) {
         currentImage.value = currentImage.value === 0 ?
-            event.value.images.length - 1 : currentImage.value - 1;
+        currentEvent.value.images.length - 1 : currentImage.value - 1;
     }
 };
 
@@ -37,15 +38,13 @@ const goBack = () => {
 </script>
 
 <template>
-    <div v-if="isLoading">Chargement...</div>
-    <div v-else-if="error">Erreur: {{ error }}</div>
-    <article v-else-if="event" class="projet">
-        <div class="carousel" v-if="event.images?.length > 0">
+    <article v-if="currentEvent" class="projet">
+        <div class="carousel" v-if="currentEvent.images?.length > 0">
             <button class="carousel-btn prev" @click="prevImage">&#10094;</button>
-            <img :src="event.images[currentImage]" alt="Image du projet" />
+            <img :src="currentEvent.images[currentImage]" alt="Image du projet" />
             <button class="carousel-btn next" @click="nextImage">&#10095;</button>
             <div class="dots">
-                <span v-for="(_, index) in event.images" :key="index" :class="{ active: currentImage === index }"
+                <span v-for="(_, index) in currentEvent.images" :key="index" :class="{ active: currentImage === index }"
                     @click="currentImage = index">
                 </span>
             </div>
@@ -53,16 +52,16 @@ const goBack = () => {
 
         <div class="content">
             <div class="header">
-                <h1 :style="{ color: getEventColor(event.tag_id) }">{{ event.title }}</h1>
+                <h1 :style="{ color: getEventColor(currentEvent.tag) }">{{ currentEvent.title }}</h1>
                 <button class="btn-retour" @click="goBack">Retour</button>
             </div>
             <div class="metadata">
-                <TheExpertises :expertises="event.expertises" />
-                <span class="periode">{{ event.periode }}</span>
-                <a v-if="event.url && event.tag_id == 2" :href="event.url" target="_blank" rel="noopener noreferrer" class="btn-url">
+                <TheExpertises :expertises="currentEvent.expertises" />
+                <span class="periode">{{ currentEvent.periode }}</span>
+                <a v-if="currentEvent.url && currentEvent.id == 2" :href="currentEvent.url" target="_blank" rel="noopener noreferrer" class="btn-url">
                     Voir le résultat
                 </a>
-                <a v-else :href="event.url" target="_blank" rel="noopener noreferrer" class="btn-url">
+                <a v-else :href="currentEvent.url" target="_blank" rel="noopener noreferrer" class="btn-url">
                     En savoir plus
                 </a>
             </div>
@@ -70,31 +69,31 @@ const goBack = () => {
                 <!-- <div class="description" v-html="event.description"> -->
                 <h2>Objectifs</h2>
                 <ul>
-                    <div v-html="event.objectifs"></div>
+                    <div v-html="currentEvent.objectifs"></div>
                 </ul>
-                <template v-if="event.description || event.contribution || event.challenges">
+                <template v-if="currentEvent.description || currentEvent.contribution || currentEvent.challenges">
                 <h2>Le projet</h2>
-                <div v-html="event.description"></div>
-                <template v-if="event.team">
+                <div v-html="currentEvent.description"></div>
+                <template v-if="currentEvent.team">
                     <h3>L'équipe</h3>
-                    <p>{{ event.team }}</p>
+                    <p>{{ currentEvent.team }}</p>
                 </template>
                 <h3>Les technologies utilisées</h3>
                 <ul>
-                    <li v-for="techno in event.technologies" :key="techno" class="techno">
+                    <li v-for="techno in currentEvent.technologies" :key="techno" class="techno">
                         {{ techno }}</li>
                 </ul>
-                <template v-if="event.contribution">
+                <template v-if="currentEvent.contribution">
                     <h3>Ma contribution</h3>
-                    <div v-html="event.contribution"></div>
+                    <div v-html="currentEvent.contribution"></div>
                 </template>
                 <template v-else>
                     <h3>Mes challenges et difficultés</h3>
-                    <div v-html="event.challenges"></div>
+                    <div v-html="currentEvent.challenges"></div>
                 </template>
-                <template v-if="event.fiertes">
+                <template v-if="currentEvent.fiertes">
                     <h3>Ma plus grande fierté sur le projet</h3>
-                    <p>{{ event.fiertes }}</p>
+                    <p>{{ currentEvent.fiertes }}</p>
                 </template>
             </template>
             </div>

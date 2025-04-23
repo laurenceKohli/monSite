@@ -1,4 +1,5 @@
 <script setup>
+import LanguesSection from './LanguesSection.vue';
 import TheParcours from './TheParcours.vue';
 defineProps({
   msg: String,
@@ -7,6 +8,9 @@ defineProps({
 </script>
 
 <template>
+  <section id="langues">
+    <LanguesSection />
+  </section>
   <section id="monParcours">
      <TheParcours />
   </section>

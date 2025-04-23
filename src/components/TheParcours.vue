@@ -48,8 +48,8 @@ onUnmounted(() => {
 
 <style scoped>
 .graph-wrapper {
-    position: fixed;
-    top: 50px;
+    /* position: fixed; */
+    /* top: 50px; */
     width: 90%;
     max-width: 1000px;
     height: 500px;
